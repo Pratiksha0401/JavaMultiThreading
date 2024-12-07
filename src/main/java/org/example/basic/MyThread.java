@@ -90,6 +90,7 @@ public class MyThread extends Thread{
         MyThread m1 = new MyThread("Thread 1");
         MyThread m2 = new MyThread("Thread 2");
         m1.start();
+        m1.setDaemon(true); // this will run in background once main thread done it will stop execution of daemon thread as well
         m2.start();
         /*
         o/p:
