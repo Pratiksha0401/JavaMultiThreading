@@ -31,8 +31,8 @@ public class BankAccount {
                         Thread.sleep(2000);
                         balance -=amount;
                         System.out.println(Thread.currentThread().getName()+"  completing withdraw . Remaining balance "+balance);
-                    }catch (InterruptedException e){
-                        System.out.println(e);
+                    }catch (Exception e){
+                        Thread.currentThread().interrupt();
                     }finally {
                         lock.unlock();
                     }
@@ -43,8 +43,12 @@ public class BankAccount {
             }else{
                 System.out.println(Thread.currentThread().getName()+" could not acquire the lock !!!  remaining balance "+ balance);
             }
-        }catch (InterruptedException e){
-            System.out.println(e);
+        }catch (Exception e){
+            Thread.currentThread().interrupt();
+        }
+
+        if(Thread.currentThread().isInterrupted()){
+            System.out.println("Yes current thread is interrupted");
         }
     }
 }
