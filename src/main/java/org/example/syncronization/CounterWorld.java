@@ -14,3 +14,4 @@ public class CounterWorld {
         System.out.println(counter.getCount());
     }
 }
+
