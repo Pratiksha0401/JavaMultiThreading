@@ -32,5 +32,15 @@ public class SingleThreadFuture {
             System.out.println("Task is done ! ");
         }
         executorService2.shutdown();
+
+
+        //  want to use interface with future result
+        ExecutorService executorService3 = Executors.newSingleThreadExecutor();
+        Future<?>  future3 = executorService3.submit(() -> System.out.println("Hello"), "abc");
+        System.out.println(future3.get());
+        if(future3.isDone()){
+            System.out.println("Task is done ! ");
+        }
+        executorService3.shutdown();
     }
 }
