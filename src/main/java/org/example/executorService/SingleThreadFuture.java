@@ -73,7 +73,10 @@ public class SingleThreadFuture {
         for (Future<Integer> future4 : futures){
             System.out.println(future4.get());
         }
+        Integer i = executorService4.invokeAny(list);
+        System.out.println("invoke any : "+i);
         executorService4.shutdown();
+        System.out.println("Hello");
 
     }
 }
